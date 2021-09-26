@@ -1,0 +1,25 @@
+<scheduledscript scriptid="customscriptsdr_ss_bulkprocss_exertwo">
+  <description>module 8&#xd;
+bulk processing part 1 exercises 2</description>
+  <isinactive>F</isinactive>
+  <name>bulk processing part1 exer 2</name>
+  <notifyadmins>F</notifyadmins>
+  <notifyemails></notifyemails>
+  <notifyowner>T</notifyowner>
+  <scriptfile>[/SuiteScripts/sdr_ss_bulkprocss_exertwo.js]</scriptfile>
+  <scriptdeployments>
+    <scriptdeployment scriptid="customdeploysdr_ss_bulkprocss_exertwo">
+      <isdeployed>T</isdeployed>
+      <loglevel>DEBUG</loglevel>
+      <status>NOTSCHEDULED</status>
+      <title>bulk processing part1 exer 2</title>
+      <recurrence>
+        <single>
+          <repeat></repeat>
+          <startdate>2021-09-08</startdate>
+          <starttime>01:00:00Z</starttime>
+        </single>
+      </recurrence>
+    </scriptdeployment>
+  </scriptdeployments>
+</scheduledscript>

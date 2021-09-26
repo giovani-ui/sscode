@@ -1,0 +1,25 @@
+<scheduledscript scriptid="customscriptsdr_ss_bulkprocessingpartone">
+  <description>SS_bulkprocessing part1</description>
+  <isinactive>F</isinactive>
+  <name>SS_bulkprocessing part1</name>
+  <notifyadmins>F</notifyadmins>
+  <notifyemails></notifyemails>
+  <notifyowner>T</notifyowner>
+  <scriptfile>[/SuiteScripts/sdr_ss_bulkprocessingpartone.js]</scriptfile>
+  <scriptdeployments>
+    <scriptdeployment scriptid="customdeploycustomscriptsdr_ss_bulkproce">
+      <isdeployed>T</isdeployed>
+      <loglevel>DEBUG</loglevel>
+      <status>SCHEDULED</status>
+      <title>SS_bulkprocessing part1</title>
+      <recurrence>
+        <daily>
+          <everyxdays>1</everyxdays>
+          <repeat></repeat>
+          <startdate>2021-09-08</startdate>
+          <starttime>01:00:00Z</starttime>
+        </daily>
+      </recurrence>
+    </scriptdeployment>
+  </scriptdeployments>
+</scheduledscript>
