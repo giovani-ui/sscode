@@ -6,12 +6,13 @@
  /*define([], 
     function() {*/
 
-        define(['N/record'], 
+        define(['N/record','N/redirect'], 
         //add jaxdoc tags
         /**
-         * @param {record} record 
+         * @param {record} record
+         * @param {redirect} redirect  
          */
-            function(record) { //paramters is a varaible any name
+            function(record, redirect) { //paramters is a varaible any name
         
         
                 return {        //name of entry point=aftersubmit, it has to be put here
@@ -87,6 +88,21 @@
                             event.save();
         
                         }
+
+
+                        //module 12 suitlet example
+                        //redirect from ue to sl
+                        redirect.toSuitelet({
+                            scriptId : 'customscriptsdr_sl_update_emp_notes',
+                            deploymentId : 'customdeploysdr_sl_update_emp_notes',
+                            //object passing to request
+                            parameters: {
+                                sdr_name : employee.getValue('entity'), //sdr_name newly created
+                                sdr_notes : employee.getValue('comments'),  //sdr_notes newly created
+                                sdr_empid : employee.id //sdr_empid newly created
+                            }
+                        });
+
         
                     }      
             

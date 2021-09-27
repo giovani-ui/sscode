@@ -1,0 +1,31 @@
+<suitelet scriptid="customscriptsdr_sl_update_emp_notes">
+  <description>module 12 custom netsuite pages sl example 1</description>
+  <isinactive>F</isinactive>
+  <name>module 12 example 1 sl</name>
+  <notifyadmins>F</notifyadmins>
+  <notifyemails></notifyemails>
+  <notifyowner>T</notifyowner>
+  <notifyuser>F</notifyuser>
+  <scriptfile>[/SuiteScripts/sdr_sl_update_emp_notes.js]</scriptfile>
+  <scriptdeployments>
+    <scriptdeployment scriptid="customdeploysdr_sl_update_emp_notes">
+      <allemployees>F</allemployees>
+      <allpartners>F</allpartners>
+      <allroles>F</allroles>
+      <audslctrole></audslctrole>
+      <eventtype></eventtype>
+      <isdeployed>T</isdeployed>
+      <isonline>F</isonline>
+      <loglevel>DEBUG</loglevel>
+      <runasrole></runasrole>
+      <status>TESTING</status>
+      <title>module 12 example 1 sl</title>
+      <links>
+        <link>
+          <linkcategory>BASICLISTSEMPLOYEES</linkcategory>
+          <linklabel>Update Employee</linklabel>
+        </link>
+      </links>
+    </scriptdeployment>
+  </scriptdeployments>
+</suitelet>
