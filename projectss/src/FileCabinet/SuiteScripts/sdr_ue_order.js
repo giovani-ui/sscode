@@ -37,7 +37,7 @@ function(redirect, record) {
             }
             
         });
-        log.debug('internalid: ', so.id);
+        log.debug('internalid:', so.id);
 
     }
 
