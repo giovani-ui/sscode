@@ -34,6 +34,9 @@ function(redirect, record) {
                 sdr_customer : so.getValue('entity'),  //sdr_orderno newly created variable
                 sdr_total : so.getValue('total'),  //sdr_orderno newly created variable
 
+                //financing price
+                sdr_finprice : so.getValue('custbody_sdr_financing_price')
+
             }
             
         });

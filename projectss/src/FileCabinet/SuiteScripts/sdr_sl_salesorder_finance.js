@@ -16,8 +16,7 @@ function(serverWidget, redirect, record) {
         //4 get request
         var request = context.request;
         var response = context.response;
-
-        
+        var xxx;
 
 
 //otherwise if click continue result will be undefined
@@ -26,13 +25,15 @@ if (request.method == 'GET'){ //GET request from url
 
         //6 extract values from ue sdr_ue_order
         //parameters=reserved word,sdr_orderno from ue
-        var ordernum = request.parameters.sdr_orderno; //becoz not retrieving orderno from ue
+        var orderno = request.parameters.sdr_orderno; //becoz not retrieving orderno from ue
         //var ordernum = context.newRecord;   //test
         var customer = request.parameters.sdr_customer;
         var total = request.parameters.sdr_total;
 
+        //financing price new variabe sdr_finprice
+        var fprice = request.parameters.sdr_finprice;
 
-
+        var memoo;
 
         //1 create form
         var form = serverWidget.createForm({
@@ -52,7 +53,7 @@ if (request.method == 'GET'){ //GET request from url
 
         //7 add new fields OrderNum
         var sonumFid = form.addField({
-            id: 'custpage_sdr_sonumber',
+            id: 'custpage_sdr_orderno',
             label: 'Order #: ',
             type: serverWidget.FieldType.TEXT
         });
@@ -67,6 +68,20 @@ if (request.method == 'GET'){ //GET request from url
             type: serverWidget.FieldType.CURRENCY
         });
 
+        //newly created
+        var finPrice = form.addField({
+            id: 'custpage_sdr_finprice',
+            label: 'Fin Price: ',
+            type: serverWidget.FieldType.CURRENCY
+        });
+
+        //newly created
+        var vmemo = form.addField({
+            id: 'custpage_sdr_memo',
+            label: 'Memo: ',
+            type: serverWidget.FieldType.TEXT
+        });
+
 
 
 
@@ -78,17 +93,17 @@ if (request.method == 'GET'){ //GET request from url
 
 
         //8 posting values
-        sonumFid.defaultValue = ordernum;   //get order number after load so//TESTING!!!!!!
+        sonumFid.defaultValue = orderno;   //get order number after load so//TESTING!!!!!!
         customerFid.defaultValue = customer;
         totalFid.defaultValue = total;
 
+        //finprice
+        finPrice.defaultValue = fprice;
+        xxx = orderno;
 
-
-
-
+        log.debug('order number SL: '+orderno);
+        log.debug('sonumFid.defaultValue: '+sonumFid.defaultValue);
         //11
-
-
 
 
         //9 change display type for name field
@@ -102,6 +117,17 @@ if (request.method == 'GET'){ //GET request from url
             displayType: serverWidget.FieldDisplayType.INLINE   //enum value
         });
 
+        //financeprice
+        finPrice.updateDisplayType({
+            displayType: serverWidget.FieldDisplayType.INLINE   //enum value
+        });
+
+        //memo
+        finPrice.updateDisplayType({
+            displayType: serverWidget.FieldDisplayType.NORMAL   //enum value
+        });
+
+
 
         //5
         response.writePage(form);
@@ -110,6 +136,31 @@ if (request.method == 'GET'){ //GET request from url
 
     }   else {  //if POST, POST from form
 
+        //POST get value from form
+        //GET get value from url
+        //get value from the suitelet this is we used custpage_sdr_sonumber
+        //and use this value from suitelet and insert back on the form so
+        orderno = request.parameters.custpage_sdr_orderno;
+        total = request.parameters.custpage_sdr_sototal;
+        fprice = request.parameters.custpage_sdr_finprice;
+        customer = request.parameters.custpage_sdr_customer;
+
+        memoo = request.parameters.custpage_sdr_memo;
+        
+        log.debug('totalsdsd: '+total);
+
+        var vsalesorder = record.load({
+            type : record.Type.SALES_ORDER,
+            id : orderno
+        });
+
+        vsalesorder.setValue('memo',memoo);
+        vsalesorder.save();
+        
+        redirect.toRecord({
+            type : record.Type.SALES_ORDER,
+            id : orderno
+        });
         
 
     }//end else
